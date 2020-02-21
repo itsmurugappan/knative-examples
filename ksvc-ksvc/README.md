@@ -13,7 +13,7 @@ This is a one time process. Set up the istio cluster local gateway (if not set u
 If ```svc1``` is calling ```svc2``` in namespace ```abc``` Below is the url to call it.
 
 ```
-http://svc1.abc.svc.cluster.local"
+http://svc1.abc.svc.cluster.local
 ```
 
 ## Step 3 (optional) - making backend svc cluster local
