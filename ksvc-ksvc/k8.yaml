@@ -19,7 +19,7 @@ spec:
         sidecar.istio.io/inject: "false"        
     spec:
       containers:
-      - image: github.com/itsmurugappan/ksvc-ksvc/cmd/clusterlocalsvc
+      - image: github.com/itsmurugappan/knative-examples/ksvc-ksvc/cmd/clusterlocalsvc
         ports:
         - containerPort: 8080
 ---
@@ -36,7 +36,7 @@ spec:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
       containers:
-      - image: github.com/itsmurugappan/ksvc-ksvc/cmd/ingresssvc
+      - image: github.com/itsmurugappan/knative-examples/ksvc-ksvc/cmd/ingresssvc
         env:
         - name: svc-url
           value: "http://test-cluster-local-svc.svc-svc-test.svc.cluster.local"      
