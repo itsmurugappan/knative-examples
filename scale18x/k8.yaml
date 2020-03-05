@@ -28,7 +28,7 @@ spec:
       volumes:
       - name: woeid
         configMap:
-          configMapName: woeid        
+          name: woeid        
 ---
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
