@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: scale18x
+---        
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: woeid
+  namespace: scale18x
+  labels:
+    serving.knative.dev/visibility: "cluster-local" 
+spec:
+  template:
+    metadata:
+      annotations:
+        readiness.status.sidecar.istio.io/applicationPorts: ""
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+        sidecar.istio.io/inject: "false"        
+    spec:
+      containers:
+      - image: github.com/itsmurugappan/knative-examples/scale18x/cmd/woeid
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+        - name: woeid
+          mountPath: /opt/files         
+      volumes:
+      - name: woeid
+        configMap:
+          configMapName: woeid        
+---
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: trends
+  namespace: scale18x
+spec:
+  template:
+    metadata:
+      annotations:
+        readiness.status.sidecar.istio.io/applicationPorts: ""
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:
+      containers:
+      - image: github.com/itsmurugappan/knative-examples/scale18x/cmd/trends     
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: secrets
+          mountPath: /var/faas/secret        
+      volumes:
+      - name: secrets
+        secret:
+          secretName: token        
+---        

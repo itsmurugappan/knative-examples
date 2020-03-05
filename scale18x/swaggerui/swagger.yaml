@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  license:
+    name: MIT
+  title: Scale 18x
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /trends:
+    get:
+      summary: Get twitter trends     
+      parameters:
+        - in: path
+          name: place
+          schema:
+            type: string
+          required: true
+          description: place name eg. Los Angeles, California                                                 
+      responses:
+        '200':
+          description: Fetched information   
+        '401':
+          description: Unauthorized 
+        '500':
+          description: System error 
+        '403':
+          description: Forbidden                                                                                                             
