@@ -9,20 +9,20 @@ servers:
 paths:
   /trends:
     get:
-      summary: Get twitter trends     
+      summary: Get twitter trends
       parameters:
-        - in: path
+        - in: query
           name: place
           schema:
             type: string
           required: true
-          description: place name eg. Los Angeles, California                                                 
+          description: place name eg. Los Angeles, California
       responses:
         '200':
-          description: Fetched information   
+          description: Fetched information
         '401':
-          description: Unauthorized 
+          description: Unauthorized
         '500':
-          description: System error 
+          description: System error
         '403':
-          description: Forbidden                                                                                                             
+          description: Forbidden
