@@ -1,1 +1,1 @@
-defaultBaseImage: docker.io/murugappans/distroless:nonroot
+defaultBaseImage: gcr.io/distroless/static:nonroot
