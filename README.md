@@ -1,15 +1,19 @@
 # Knative Examples
 
-This repo contains various examples of knative services
+```
+ko apply -RBf config/
+```
 
-1. [Call knative service from another](./ksvc-ksvc)
-2. [twitter trends](./scale18x)
+### Twitter Example
+
+#### Pre Req
+
+1. twitter api access
 
 
+#### cm and secret
 
-## Set Up
+* create cm for woeid.tx
 
-To run the examples you would need the below
+* create secret for twitter api token
 
-1. Knative cluster
-2. [ko](https://github.com/google/ko)
